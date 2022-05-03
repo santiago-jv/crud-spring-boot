@@ -2,6 +2,8 @@ package com.dev.api.controllers;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import com.dev.api.dtos.UserDTO;
 import com.dev.api.models.User;
 import com.dev.api.services.UserService;
@@ -33,7 +35,7 @@ public class UserController {
     }   
 
     @PostMapping()
-    public ResponseEntity<User> createUser(@RequestBody UserDTO userData) {
+    public ResponseEntity<User> createUser( @Valid @RequestBody UserDTO userData) {
         User user = this.userService.createUser(userData);
 
         return user == null ? 

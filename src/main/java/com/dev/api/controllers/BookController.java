@@ -2,6 +2,8 @@ package com.dev.api.controllers;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import com.dev.api.dtos.BookDTO;
 import com.dev.api.dtos.LibraryDTO;
 import com.dev.api.models.Book;
@@ -27,7 +29,7 @@ public class BookController {
     private BookService bookService;
  
     @PostMapping("library/{libraryId}")
-    public ResponseEntity<Book> createBook(@RequestBody BookDTO bookData, @PathVariable() Long libraryId) {
+    public ResponseEntity<Book> createBook(@Valid @RequestBody BookDTO bookData, @PathVariable() Long libraryId) {
         ServiceResponse response = bookService.saveBook(bookData,libraryId);
         HttpStatus statusCode = response.getStatusCode();
         
